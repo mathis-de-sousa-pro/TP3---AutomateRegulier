@@ -1,0 +1,87 @@
+﻿<Window x:Class="AutomateRegulier.Vue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutomateRegulier"
+        mc:Ignorable="d"
+        Title="Automate régulier" Height="700" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Viewbox VerticalAlignment="Top" Margin="10">
+                <ListView x:Name="ListMots" FontSize="20" Width="350" SelectionMode="Multiple" SelectionChanged="ListMots_SelectionChanged" ItemsSource="{Binding Mots}" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CasValide}" Value="0">
+                                    <Setter Property="Background" Value="LightGray" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CasValide}" Value="1">
+                                    <Setter Property="Background" Value="LightGreen" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CasValide}" Value="-1">
+                                    <Setter Property="Background" Value="Red" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <TextBlock Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Viewbox>
+        </Grid>
+        
+        <Grid Grid.Column="1" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Viewbox Margin="15,15,15,0" Grid.Row="0">
+                <TextBlock Width="100" TextAlignment="Center">Algorithme</TextBlock>
+            </Viewbox>
+            <Viewbox Margin="15,0,15,0"  Grid.Row="1">
+                <ComboBox x:Name="ComboAlgorithme" Width="100" Height="15" ItemsSource="{Binding ListeAlgorithmes}" SelectedItem="{Binding NomAlgorithmeSelectionne}" FontSize="7"></ComboBox>
+            </Viewbox>
+
+            <ScrollViewer Grid.Row="2"  Margin="15,15,15,15">
+                <Viewbox VerticalAlignment="Top">
+                    <DataGrid FontSize="10" Width="150" ItemsSource="{Binding Etapes}" AutoGenerateColumns="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Event"  Binding="{Binding Evenement}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="State"  Binding="{Binding NomEtat}" Width="*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid >
+                </Viewbox>
+            </ScrollViewer>
+        </Grid>
+        
+    </Grid>
+</Window>
