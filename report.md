@@ -53,3 +53,53 @@ Il accepte exactement les mots qui **commencent par la lettre `A`**. Après avoi
 
 La regex équivalente est : `^A.*$`
 
+
+## Questions 9 à 20
+
+### 9. Donnez un automate reconnaissant les mots commençant par "Http://".
+
+L'automate possède une chaîne d'états lisant successivement `H`, `t`, `t`, `p`, `:`, `/`, `/` avant d'atteindre un état terminal qui boucle sur lui‑même pour accepter le reste du mot.
+
+### 10. Implémentez dans le projet un algorithme `AlgorithmeCommenceParHttp` créant cet automate et testez‑le.
+
+Un nouvel algorithme a été ajouté dans `AlgorithmeCommenceParHttp` et enregistré dans la fabrique. Il valide correctement les mots tels que `"Http://site"` et rejette ceux qui ne commencent pas par cette séquence.
+
+### 11. Donnez la regex associée à cet automate.
+
+`^Http://.*$`
+
+### 12. Donnez un automate reconnaissant les mots commençant par "Http://" ou par "www".
+
+Depuis l'état initial deux chemins sont possibles : l'un lit la séquence `Http://`, l'autre lit `www`. Les deux convergent vers un même état terminal qui boucle sur tout caractère.
+
+### 13. Implémentez dans le projet un algorithme `AlgorithmeCommenceParHTTPouWWW` créant cet automate et testez‑le.
+
+Cet algorithme a été implémenté et enregistré dans la fabrique. Il accepte par exemple `"Http://exemple"` ou `"wwwsite"` mais rejette `"ftp://"`.
+
+### 14. Donnez la regex associée à cet automate.
+
+`^(Http://|www).*$`
+
+### 15. Donnez un automate reconnaissant les mots finissant par ".fr".
+
+L'automate garde les deux derniers caractères lus. L'état terminal correspond à la lecture de la séquence finale `.fr`.
+
+### 16. Implémentez dans le projet un algorithme `AlgorithmeFinissantParFR` créant cet automate et testez‑le.
+
+Un algorithme dédié a été ajouté. Il reconnaît par exemple `"site.fr"` mais pas `"site.fra"`.
+
+### 17. Donnez la regex associée à cet automate.
+
+`.*\.fr$`
+
+### 18. Donnez un automate reconnaissant les mots finissant par ".fr" ou ".com".
+
+L'automate précédent est complété par un second chemin mémorisant la séquence finale `.com`. Les états terminaux correspondent respectivement aux suffixes `.fr` et `.com`.
+
+### 19. Implémentez dans le projet un algorithme `AlgorithmeFinissantParFRouCOM` créant cet automate et testez‑le.
+
+L'algorithme a été ajouté et enregistré. Il reconnaît `"exemple.com"` et `"exemple.fr"` mais pas `"exemple.net"`.
+
+### 20. Donnez la regex associée à cet automate.
+
+`.*\.(fr|com)$`
