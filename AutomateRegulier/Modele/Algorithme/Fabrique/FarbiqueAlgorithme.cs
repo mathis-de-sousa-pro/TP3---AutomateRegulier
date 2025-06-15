@@ -33,12 +33,13 @@ namespace AutomateRegulier.Modele.Algorithme.Fabrique
         /// </summary>
         private void Initialisation()
         {
-            //-------- TODO : Enregistrer ici vos algorithmes ---------
+
+            // Enregistrement des différents algorithmes
             this.Enregistrer(new MakerAlgorithmeExemple());
-
-
-
-
+            this.Enregistrer(new MakerAlgorithmeCommenceParHttp());
+            this.Enregistrer(new MakerAlgorithmeCommenceParHTTPouWWW());
+            this.Enregistrer(new MakerAlgorithmeFinissantParFR());
+            this.Enregistrer(new MakerAlgorithmeFinissantParFRouCOM());
 
         }
 
