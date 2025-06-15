@@ -40,6 +40,8 @@ namespace AutomateRegulier.Modele.Algorithme.Fabrique
             this.Enregistrer(new MakerAlgorithmeCommenceParHTTPouWWW());
             this.Enregistrer(new MakerAlgorithmeFinissantParFR());
             this.Enregistrer(new MakerAlgorithmeFinissantParFRouCOM());
+            this.Enregistrer(new MakerAlgorithmeSansPointVirgule());
+            this.Enregistrer(new MakerAlgorithmeMDP());
 
         }
 

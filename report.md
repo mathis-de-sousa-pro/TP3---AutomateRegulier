@@ -103,3 +103,29 @@ L'algorithme a été ajouté et enregistré. Il reconnaît `"exemple.com"` et `"
 ### 20. Donnez la regex associée à cet automate.
 
 `.*\.(fr|com)$`
+
+### 21. Donnez un automate reconnaissant les mots ne contenant pas de `;`.
+
+L'automate se compose d'un état initial et terminal qui boucle sur tout caractère
+sauf `;`. Une transition sur `;` mène vers un état d'erreur non terminal qui
+boucle sur lui‑même.
+
+### 22. Implémentez dans le projet un algorithme `AlgorithmeSansPointVirgule` créant cet automate et testez‑le.
+
+L'automate a été ajouté dans le dossier `Realisation` et enregistré dans la fabrique.
+Il accepte par exemple `"bonjour"` mais rejette `"bad;word"`.
+
+### 23. Donnez la regex associée à cet automate.
+
+`^[^;]*$`
+
+### 24. Donnez un automate reconnaissant les mots contenant au moins une lettre minuscule, une lettre majuscule et un chiffre.
+
+On modélise les différentes combinaisons rencontrées (aucune, minuscule seule,
+majuscule seule, chiffre seul, etc.) via huit états. Une fois les trois types de
+caractères lus, on atteint un état terminal qui boucle sur lui‑même.
+
+### 25. Implémentez dans le projet un algorithme `AlgorithmeMDP` créant cet automate et testez‑le.
+
+L'algorithme a été codé et enregistré. Il valide par exemple `"Abc1"` et rejette
+`"abc"` ou `"ABC1"` car ils ne contiennent pas les trois catégories requises.
