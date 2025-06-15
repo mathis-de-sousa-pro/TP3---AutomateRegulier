@@ -129,3 +129,28 @@ caractères lus, on atteint un état terminal qui boucle sur lui‑même.
 
 L'algorithme a été codé et enregistré. Il valide par exemple `"Abc1"` et rejette
 `"abc"` ou `"ABC1"` car ils ne contiennent pas les trois catégories requises.
+
+### 26. Donnez un automate reconnaissant les dates.
+
+L'automate lit successivement deux chiffres pour le jour, un `/`, deux chiffres
+pour le mois puis un second `/` et deux chiffres pour l'année. Les transitions
+restreignent les valeurs :
+
+- le jour est compris entre `01` et `31` ;
+- le mois est compris entre `01` et `12` ;
+- l'année est quelconque entre `00` et `99`.
+
+### 27. Implémentez dans le projet un algorithme `AlgorithmeDATE` créant cet
+automate et testez‑le sur des mots judicieusement choisis.
+
+Un nouveau fichier `AlgorithmeDATE.cs` a été ajouté dans `Modele/Algorithme/Realisation`
+ainsi que son maker correspondant. L'algorithme est enregistré dans la fabrique.
+Il valide par exemple `"15/07/23"` et rejette `"32/07/23"` ou `"12/13/20"`.
+
+### 28. Modifiez votre automate pour qu'il gère les mois à 30 jours ainsi que le
+mois de février (on ne cherchera pas à gérer les années bissextiles).
+
+L'automate a été adapté pour mémoriser la catégorie du jour (`≤28`, `29‑30`, `31`)
+et vérifier ensuite le mois : les jours 29 et 30 ne sont pas autorisés en
+février, et le jour 31 n'est permis que pour les mois de 31 jours. Ainsi,
+`"31/04/21"` est rejeté alors que `"31/05/21"` est accepté.
